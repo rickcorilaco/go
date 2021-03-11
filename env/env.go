@@ -46,8 +46,14 @@ func FromFile(filePath string) (err error) {
 	}
 
 	err = json.Unmarshal(file, &mEnv)
-	fmt.Println(mEnv)
 	return
+}
+
+func MustFromFile(filePath string) {
+	err := FromFile(filePath)
+	if err != nil {
+		panic(err)
+	}
 }
 
 func String(key string) (value string, err error) {
@@ -66,5 +72,10 @@ func MustString(key string) (value string) {
 		panic(err)
 	}
 
+	return
+}
+
+func TryString(key string) (value string) {
+	value, _ = String(key)
 	return
 }
