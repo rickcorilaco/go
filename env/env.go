@@ -79,3 +79,31 @@ func TryString(key string) (value string) {
 	value, _ = String(key)
 	return
 }
+
+func Bool(key string) (value bool, err error) {
+	v, err := find(key, mEnv)
+	if err != nil {
+		return
+	}
+
+	value, ok := v.(bool)
+	if !ok {
+		err = fmt.Errorf("invalid bool to key: %s", key)
+	}
+
+	return
+}
+
+func MustBool(key string) (value bool) {
+	value, err := Bool(key)
+	if err != nil {
+		panic(err)
+	}
+
+	return
+}
+
+func TryBool(key string) (value bool) {
+	value, _ = Bool(key)
+	return
+}
