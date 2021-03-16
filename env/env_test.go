@@ -41,18 +41,6 @@ func TestMustString(t *testing.T) {
 	}
 }
 
-func TestTryString(t *testing.T) {
-	TestFromFile(t)
-
-	username := TryString("repository.username")
-	expected := "root"
-
-	if username != expected {
-		t.Errorf("expected for '%s' but obtained '%s'", expected, username)
-		return
-	}
-}
-
 func TestInt(t *testing.T) {
 	TestFromFile(t)
 
@@ -74,19 +62,6 @@ func TestMustInt(t *testing.T) {
 	TestFromFile(t)
 
 	value := MustInt("repository.port")
-
-	expected := int(1234)
-
-	if value != expected {
-		t.Errorf("expected for '%d' but obtained '%d'", expected, value)
-		return
-	}
-}
-
-func TestTryInt(t *testing.T) {
-	TestFromFile(t)
-
-	value := TryInt("repository.port")
 
 	expected := int(1234)
 
@@ -126,19 +101,6 @@ func TestMustInt64(t *testing.T) {
 	}
 }
 
-func TestTryInt64(t *testing.T) {
-	TestFromFile(t)
-
-	value := TryInt64("repository.port")
-
-	expected := int64(1234)
-
-	if value != expected {
-		t.Errorf("expected for '%d' but obtained '%d'", expected, value)
-		return
-	}
-}
-
 func TestFloat64(t *testing.T) {
 	TestFromFile(t)
 
@@ -169,19 +131,6 @@ func TestMustFloat64(t *testing.T) {
 	}
 }
 
-func TestTryFloat64(t *testing.T) {
-	TestFromFile(t)
-
-	value := TryFloat64("payment.min_value")
-
-	expected := float64(9.99)
-
-	if value != expected {
-		t.Errorf("expected for '%f' but obtained '%f'", expected, value)
-		return
-	}
-}
-
 func TestBool(t *testing.T) {
 	TestFromFile(t)
 
@@ -203,19 +152,6 @@ func TestMustBool(t *testing.T) {
 	TestFromFile(t)
 
 	value := MustBool("repository.log")
-
-	expected := bool(true)
-
-	if value != expected {
-		t.Errorf("expected for '%t' but obtained '%t'", expected, value)
-		return
-	}
-}
-
-func TestTryBool(t *testing.T) {
-	TestFromFile(t)
-
-	value := TryBool("repository.log")
 
 	expected := bool(true)
 
